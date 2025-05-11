@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome to My Website</h1>
+    <button onclick="loadData('d2020')">Load Data 1</button>
+    <button onclick="loadData('d2021')">Load Data 2</button>
+    <button onclick="loadData('d2022')">Load Data 3</button>
+    <button onclick="loadData('d2023')">Load Data 4</button>
+    <button onclick="loadData('d2024')">Load Data 5</button>
+    <p id="data"></p>
+
+    <script>
+        function loadData(file) {
+            fetch(`${file}.json`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('data').innerHTML = JSON.stringify(data, null, 2);
+                })
+                .catch(error => console.error('Error loading JSON:', error));
+        }
+    </script>
+</body>
+</html>
